@@ -9,6 +9,7 @@
 
 (def resolver-map
   {:query/member-by-id members/fetch-member-by-id
+   :query/members members/list-members
    ;; TODO: implement list-artist-members resolver
    :Artist/members (constantly [])
    ;; TODO: implement fetch-artist-by-id resolver

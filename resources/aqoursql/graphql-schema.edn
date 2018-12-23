@@ -46,4 +46,14 @@
    :args
    {:id {:type (non-null Int)
          :description "メンバーID"}}
-   :resolve :query/member-by-id}}}
+   :resolve :query/member-by-id}
+
+  :members
+  {:type (list :Member)
+   :description "メンバー一覧取得"
+   :args
+   {:name {:type String
+           :description "メンバー名 (部分一致)"}
+    :organization_name {:type String
+                        :description "所属組織名 (部分一致)"}}
+   :resolve :query/members}}}

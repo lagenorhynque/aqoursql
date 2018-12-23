@@ -4,7 +4,7 @@
             [clojure.spec.alpha :as s]
             [duct.database.sql]
             [honeysql.core :as sql]
-            [honeysql.helpers :refer [merge-where]]))
+            [honeysql.helpers :refer [merge-order-by merge-where]]))
 
 (s/def ::id nat-int?)
 (s/def ::name string?)
@@ -23,8 +23,15 @@
                :id ::id)
   :ret (s/nilable ::member))
 
+(s/fdef find-members
+  :args (s/cat :db ::db/db
+               :tx-data (s/nilable (s/keys :opt-un [::name
+                                                    ::organization_name])))
+  :ret (s/coll-of ::member))
+
 (defprotocol Member
-  (find-member-by-id [db id]))
+  (find-member-by-id [db id])
+  (find-members [db tx-data]))
 
 (def sql-member-with-organization
   (sql/build
@@ -37,4 +44,11 @@
 (extend-protocol Member
   duct.database.sql.Boundary
   (find-member-by-id [db id]
-    (db/select-first db (merge-where sql-member-with-organization [:= :m.id id]))))
+    (db/select-first db (merge-where sql-member-with-organization [:= :m.id id])))
+  (find-members [db {:keys [name organization_name]}]
+    (db/select db (cond-> sql-member-with-organization
+                    name (merge-where [:like :m.name (str \% name \%)])
+                    organization_name (merge-where [:like
+                                                    :o.name
+                                                    (str \% organization_name \%)])
+                    true (merge-order-by [:m.id :asc])))))

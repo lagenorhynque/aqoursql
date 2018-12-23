@@ -3,3 +3,6 @@
 
 (defn fetch-member-by-id [{:keys [db]} {:keys [id]} _]
   (db.member/find-member-by-id db id))
+
+(defn list-members [{:keys [db]} args _]
+  (db.member/find-members db args))
