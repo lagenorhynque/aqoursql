@@ -1,5 +1,6 @@
 (ns aqoursql.graphql
-  (:require [clojure.edn :as edn]
+  (:require [aqoursql.resolver.members :as members]
+            [clojure.edn :as edn]
             [clojure.java.io :as io]
             [com.walmartlabs.lacinia.pedestal :as lacinia]
             [com.walmartlabs.lacinia.schema :as schema]
@@ -7,8 +8,7 @@
             [integrant.core :as ig]))
 
 (def resolver-map
-  {;; TODO: implement fetch-member-by-id resolver
-   :query/member-by-id (constantly nil)
+  {:query/member-by-id members/fetch-member-by-id
    ;; TODO: implement list-artist-members resolver
    :Artist/members (constantly [])
    ;; TODO: implement fetch-artist-by-id resolver
