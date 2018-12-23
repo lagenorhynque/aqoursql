@@ -22,6 +22,18 @@ $ lein duct setup
 This will create files for local configuration, and prep your system
 for the project.
 
+### Database
+
+```sh
+# Start local DB
+$ docker-compose up -d
+# Import DB schema
+$ mysql -h127.0.0.1 -P3316 -uroot -proot aqoursql < sql/ddl/aqoursql.sql
+$ mysql -h127.0.0.1 -P3317 -uroot -proot aqoursql_test < sql/ddl/aqoursql.sql
+# Seed DB
+$ mysql -h127.0.0.1 -P3316 -uroot -proot aqoursql < sql/dml/seed.sql
+```
+
 ### Development environment
 
 To begin developing, start with a REPL.
@@ -47,11 +59,11 @@ Run `go` to prep and initiate the system.
 
 ```clojure
 dev=> (go)
-:duct.server.http.jetty/starting-server {:port 3000}
+:duct.server.http.jetty/starting-server {:port 8888}
 :initiated
 ```
 
-By default this creates a web server at <http://localhost:3000>.
+By default this creates a web server at <http://localhost:8888>.
 
 When you make changes to your source files, use `reset` to reload any
 modified files and reset the server.
