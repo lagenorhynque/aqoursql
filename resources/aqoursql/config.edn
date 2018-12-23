@@ -2,8 +2,21 @@
  :duct.core/environment :production
 
  :duct.module/logging {}
- :duct.module/web {}
- :duct.module/sql {}
- 
- :duct.router/cascading
- []}
+
+ :duct.module/sql
+ {:database-url #duct/env "DATABASE_URL"}
+
+ :duct.module/pedestal {}
+ :duct.server/pedestal
+ {:base-service #ig/ref :aqoursql.graphql/service
+  :service #:io.pedestal.http{:join? true
+                              :host #duct/env "SERVER_HOST"
+                              :port #duct/env ["SERVER_PORT" Int :or 8888]}}
+
+ :aqoursql.graphql/schema {}
+
+ :aqoursql.graphql/service
+ {:schema #ig/ref :aqoursql.graphql/schema
+  :options {:graphiql true
+            :app-context {:db #ig/ref :duct.database/sql}
+            :env :prod}}}

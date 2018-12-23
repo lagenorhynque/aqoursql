@@ -1,26 +1,39 @@
 # aqoursql
 
-FIXME: description
+AqoursQL, an example GraphQL API based on [Lacinia-Pedestal](https://github.com/walmartlabs/lacinia-pedestal) & [Duct](https://github.com/duct-framework/duct).
 
 ## Developing
+
+### Prerequisites
+
+- [Java (JDK)](http://www.oracle.com/technetwork/java/javase/overview/index.html)
+    - `java -version` >= 8 (1.8.0)
+- [Leiningen](https://leiningen.org/)
+- [Docker](https://www.docker.com/)
 
 ### Setup
 
 When you first clone this repository, run:
 
 ```sh
-lein duct setup
+$ lein duct setup
 ```
 
 This will create files for local configuration, and prep your system
 for the project.
 
-### Environment
+### Development environment
 
 To begin developing, start with a REPL.
 
 ```sh
-lein repl
+$ lein repl
+```
+
+With [rebel-readline](https://github.com/bhauman/rebel-readline):
+
+```sh
+$ lein rebel
 ```
 
 Then load the development environment.
@@ -49,6 +62,20 @@ dev=> (reset)
 :resumed
 ```
 
+Run `halt` to halt the system.
+
+```clojure
+dev=> (halt)
+:halted
+```
+
+### Production build & run
+
+```sh
+$ lein uberjar
+$ DATABASE_URL="..." java -jar target/aqoursql.jar
+```
+
 ### Testing
 
 Testing is fastest through the REPL, as you avoid environment startup
@@ -62,9 +89,33 @@ dev=> (test)
 But you can also run tests through Leiningen.
 
 ```sh
-lein test
+$ lein test
 ```
 
-## Legal
+with [cloverage](https://github.com/cloverage/cloverage):
 
-Copyright © 2018 FIXME
+```sh
+$ lein test-coverage
+# Open the coverage report
+$ open target/coverage/index.html
+```
+
+### Linting ([`cljfmt check`](https://github.com/weavejester/cljfmt), [`eastwood`](https://github.com/jonase/eastwood), [`kibit`](https://github.com/jonase/kibit))
+
+```sh
+$ lein lint
+```
+
+### API Documentation ([Codox](https://github.com/weavejester/codox))
+
+```sh
+$ lein codox
+$ open target/codox/index.html
+```
+
+### GraphQL execution ([GraphiQL](https://github.com/graphql/graphiql))
+
+```sh
+# After staring the server
+$ open http://localhost:8888
+```

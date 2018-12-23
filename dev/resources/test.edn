@@ -1,0 +1,8 @@
+{:duct.core/environment :development
+ :duct.core/include ["dev"]
+
+ :duct.module/sql
+ {:database-url #duct/env ["TEST_DATABASE_URL" :or "jdbc:mysql://localhost:3317/aqoursql_test?user=aqoursql_dev&password=password123"]}
+
+ :duct.server/pedestal
+ {:service #:io.pedestal.http{:port 8881}}}
