@@ -1,0 +1,49 @@
+{:objects
+ {:Member
+  {:description "メンバー"
+   :fields
+   {:id {:type (non-null Int)
+         :description "メンバーID"}
+    :name {:type (non-null String)
+           :description "メンバー名"}
+    :organization_id {:type (non-null Int)
+                      :description "所属組織ID"}
+    :organization_name {:type (non-null String)
+                        :description "所属組織名"}}}
+
+  :Artist
+  {:description "アーティスト"
+   :fields
+   {:id {:type (non-null Int)
+         :description "アーティストID"}
+    :type {:type (non-null Int)
+           :description "アーティストタイプ (1: グループ, 2: ソロ)"}
+    :name {:type (non-null String)
+           :description "アーティスト名"}
+    :members {:type (list :Member)
+              :description "メンバー一覧"
+              :resolve :Artist/members}}}
+
+  :Song
+  {:description "楽曲"
+   :fields
+   {:id {:type (non-null Int)
+         :description "楽曲ID"}
+    :name {:type (non-null String)
+           :description "楽曲名"}
+    :artist_id {:type (non-null Int)
+                :description "アーティストID"}
+    :artist {:type (non-null :Artist)
+             :description "アーティスト"
+             :resolve :Song/artist}
+    :release_date {:type (non-null String)
+                   :description "リリース日 (YYYY-MM-DD)"}}}}
+
+ :queries
+ {:member_by_id
+  {:type :Member
+   :description "IDによるメンバー取得"
+   :args
+   {:id {:type (non-null Int)
+         :description "メンバーID"}}
+   :resolve :query/member-by-id}}}
