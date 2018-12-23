@@ -1,0 +1,9 @@
+{:duct.core/project-ns  aqoursql
+ :duct.core/environment :production
+
+ :duct.module/logging {}
+ :duct.module/web {}
+ :duct.module/sql {}
+ 
+ :duct.router/cascading
+ []}

@@ -1,0 +1,5 @@
+{:duct.core/environment :development
+ :duct.core/include ["aqoursql/config"]
+
+ :duct.module/sql
+ {:database-url "jdbc:postgresql://localhost/postgres"}}
