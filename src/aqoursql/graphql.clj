@@ -17,8 +17,7 @@
    :query/song-by-id songs/fetch-song-by-id
    :query/songs songs/list-songs
    :Artist/members members/list-artist-members
-   ;; TODO: implement fetch-artist-by-id resolver
-   :Song/artist (constantly nil)})
+   :Song/artist artists/fetch-artist-by-artist-id})
 
 (defmethod ig/init-key ::schema
   [_ _]
