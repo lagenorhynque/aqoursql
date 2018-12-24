@@ -16,8 +16,7 @@
    :query/members members/list-members
    :query/song-by-id songs/fetch-song-by-id
    :query/songs songs/list-songs
-   :Artist/members members/list-artist-members
-   :Song/artist artists/fetch-artist-by-artist-id})
+   :Artist/members members/list-artist-members})
 
 (defmethod ig/init-key ::schema
   [_ _]

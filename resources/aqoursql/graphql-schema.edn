@@ -34,8 +34,7 @@
     :artist_id {:type (non-null Int)
                 :description "アーティストID"}
     :artist {:type (non-null :Artist)
-             :description "アーティスト"
-             :resolve :Song/artist}
+             :description "アーティスト"}
     :release_date {:type (non-null String)
                    :description "リリース日 (YYYY-MM-DD)"}}}}
 
