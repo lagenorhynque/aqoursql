@@ -40,7 +40,25 @@
                    :description "リリース日 (YYYY-MM-DD)"}}}}
 
  :queries
- {:member_by_id
+ {:artist_by_id
+  {:type :Artist
+   :description "IDによるアーティスト取得"
+   :args
+   {:id {:type (non-null Int)
+         :description "アーティストID"}}
+   :resolve :query/artist-by-id}
+
+  :artists
+  {:type (list :Artist)
+   :description "アーティスト一覧取得"
+   :args
+   {:type {:type Int
+           :description "アーティストタイプ (1: グループ, 2: ソロ)"}
+    :name {:type String
+           :description "アーティスト名 (部分一致)"}}
+   :resolve :query/artists}
+
+  :member_by_id
   {:type :Member
    :description "IDによるメンバー取得"
    :args

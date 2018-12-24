@@ -1,5 +1,6 @@
 (ns aqoursql.graphql
-  (:require [aqoursql.resolver.members :as members]
+  (:require [aqoursql.resolver.artists :as artists]
+            [aqoursql.resolver.members :as members]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [com.walmartlabs.lacinia.pedestal :as lacinia]
@@ -8,7 +9,9 @@
             [integrant.core :as ig]))
 
 (def resolver-map
-  {:query/member-by-id members/fetch-member-by-id
+  {:query/artist-by-id artists/fetch-artist-by-id
+   :query/artists artists/list-artists
+   :query/member-by-id members/fetch-member-by-id
    :query/members members/list-members
    ;; TODO: implement list-artist-members resolver
    :Artist/members (constantly [])
