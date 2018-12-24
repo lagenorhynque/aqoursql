@@ -6,3 +6,6 @@
 
 (defn list-members [{:keys [db]} args _]
   (db.member/find-members db args))
+
+(defn list-artist-members [{:keys [db]} _ {:keys [id]}]
+  (db.member/find-members db {:artist_id id}))

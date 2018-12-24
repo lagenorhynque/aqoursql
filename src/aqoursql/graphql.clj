@@ -16,8 +16,7 @@
    :query/members members/list-members
    :query/song-by-id songs/fetch-song-by-id
    :query/songs songs/list-songs
-   ;; TODO: implement list-artist-members resolver
-   :Artist/members (constantly [])
+   :Artist/members members/list-artist-members
    ;; TODO: implement fetch-artist-by-id resolver
    :Song/artist (constantly nil)})
 
