@@ -70,7 +70,7 @@
     :artist_id 1
     :release_date #inst "2015-10-07"}
    {:id 2
-    :name "元気全開DAY！DAY！DAY"
+    :name "元気全開DAY！DAY！DAY!"
     :artist_id 2
     :release_date #inst "2016-05-11"}
    {:id 3

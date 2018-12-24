@@ -30,14 +30,15 @@
 (defn list-songs [{:keys [db] :as context} args _]
   (cond
     (executor/selects-field? context :Artist/members)
-    (let [songs (db.song/find-songs db (assoc args :with-artist? true))
-          members-map (group-by :artist_id
-                                (db.member/find-members db {:artist_ids (distinct (map :artist_id songs))}))]
-      (map (fn [{:keys [artist_id] :as song}]
-             (-> song
-                 song-with-artist
-                 (assoc-in [:artist :members] (get members-map artist_id))))
-           songs))
+    (if-let [songs (seq (db.song/find-songs db (assoc args :with-artist? true)))]
+      (let [members-map (group-by :artist_id
+                                  (db.member/find-members db {:artist_ids (distinct (map :artist_id songs))}))]
+        (map (fn [{:keys [artist_id] :as song}]
+               (-> song
+                   song-with-artist
+                   (assoc-in [:artist :members] (get members-map artist_id))))
+             songs))
+      [])
 
     (executor/selects-field? context :Song/artist)
     (map song-with-artist
