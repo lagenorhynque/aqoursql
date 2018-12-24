@@ -1,6 +1,7 @@
 (ns aqoursql.graphql
   (:require [aqoursql.resolver.artists :as artists]
             [aqoursql.resolver.members :as members]
+            [aqoursql.resolver.songs :as songs]
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [com.walmartlabs.lacinia.pedestal :as lacinia]
@@ -13,6 +14,8 @@
    :query/artists artists/list-artists
    :query/member-by-id members/fetch-member-by-id
    :query/members members/list-members
+   :query/song-by-id songs/fetch-song-by-id
+   :query/songs songs/list-songs
    ;; TODO: implement list-artist-members resolver
    :Artist/members (constantly [])
    ;; TODO: implement fetch-artist-by-id resolver
