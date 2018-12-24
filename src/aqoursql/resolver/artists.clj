@@ -12,7 +12,8 @@
 
 (defn list-artists [{:keys [db] :as context} args _]
   (let [artists (db.artist/find-artists db args)]
-    (if (executor/selects-field? context :Artist/members)
+    (if (and (seq artists)
+             (executor/selects-field? context :Artist/members))
       (let [members-map (group-by :artist_id
                                   (db.member/find-members db {:artist_ids (distinct (map :id artists))}))]
         (map (fn [{:keys [id] :as artist}]
