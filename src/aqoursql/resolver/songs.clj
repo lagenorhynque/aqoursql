@@ -15,14 +15,14 @@
 (defn fetch-song-by-id [{:keys [db] :as context} args _]
   (cond
     (executor/selects-field? context :Artist/members)
-    (let [song (db.song/find-song-by-id db (assoc args :with-artist? true))
-          members (db.member/find-members db {:artist_id (:artist_id song)})]
-      (-> song
-          song-with-artist
-          (assoc-in [:artist :members] members)))
+    (when-let [song (db.song/find-song-by-id db (assoc args :with-artist? true))]
+      (let [members (db.member/find-members db {:artist_id (:artist_id song)})]
+        (-> song
+            song-with-artist
+            (assoc-in [:artist :members] members))))
 
     (executor/selects-field? context :Song/artist)
-    (song-with-artist (db.song/find-song-by-id db (assoc args :with-artist? true)))
+    (some-> (db.song/find-song-by-id db (assoc args :with-artist? true)) song-with-artist)
 
     :else
     (db.song/find-song-by-id db args)))
