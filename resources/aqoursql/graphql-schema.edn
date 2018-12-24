@@ -21,8 +21,7 @@
     :name {:type (non-null String)
            :description "アーティスト名"}
     :members {:type (list :Member)
-              :description "メンバー一覧"
-              :resolve :Artist/members}}}
+              :description "メンバー一覧"}}}
 
   :Song
   {:description "楽曲"
