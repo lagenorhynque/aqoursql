@@ -4,7 +4,7 @@
             [com.walmartlabs.lacinia.executor :as executor]))
 
 (defn fetch-artist-by-id [{:keys [db] :as context} {:keys [id]} _]
-  (let [artist (db.artist/find-artist-by-id db id)]
+  (when-let [artist (db.artist/find-artist-by-id db id)]
     (if (executor/selects-field? context :Artist/members)
       (let [members (db.member/find-members db {:artist_id (:id artist)})]
         (assoc artist :members members))
