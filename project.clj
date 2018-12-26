@@ -1,7 +1,7 @@
 (defproject aqoursql "0.1.0"
   :description "AqoursQL, an example GraphQL API"
   :url "https://github.com/lagenorhynque/aqoursql"
-  :min-lein-version "2.0.0"
+  :min-lein-version "2.8.1"
   :dependencies [[com.walmartlabs/lacinia "0.30.0"]
                  [com.walmartlabs/lacinia-pedestal "0.10.0"]
                  [duct.module.pedestal "1.0.0"]
@@ -13,7 +13,8 @@
                  [honeysql "0.9.4"]
                  [io.pedestal/pedestal.jetty "0.5.5"]
                  [io.pedestal/pedestal.service "0.5.5"]
-                 [org.clojure/clojure "1.9.0"]
+                 [org.clojure/clojure "1.10.0"]
+                 [org.flatland/ordered "1.5.7"]
                  [org.mariadb.jdbc/mariadb-java-client "2.3.0"]]
   :plugins [[duct/lein-duct "0.10.6"]]
   :main ^:skip-aot aqoursql.main
