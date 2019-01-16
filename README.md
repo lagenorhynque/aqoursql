@@ -6,7 +6,7 @@ AqoursQL, an example GraphQL API based on [Lacinia-Pedestal](https://github.com/
 
 ### Prerequisites
 
-- [Java (JDK)](http://www.oracle.com/technetwork/java/javase/overview/index.html)
+- [Java (JDK)](http://openjdk.java.net/)
     - `java -version` >= 8 (1.8.0)
 - [Leiningen](https://leiningen.org/)
 - [Docker](https://www.docker.com/)

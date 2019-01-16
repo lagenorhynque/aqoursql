@@ -1,22 +1,29 @@
-{:duct.core/project-ns  aqoursql
- :duct.core/environment :production
+{:duct.profile/base
+ {:duct.core/project-ns  aqoursql
+  :duct.core/environment :production
+
+  :duct.server/pedestal
+  {:base-service #ig/ref :aqoursql.graphql/service
+   :service #:io.pedestal.http{:join? true
+                               :host #duct/env "SERVER_HOST"
+                               :port #duct/env ["SERVER_PORT" Int :or 8888]}}
+
+  :aqoursql.graphql/schema {}
+
+  :aqoursql.graphql/service
+  {:schema #ig/ref :aqoursql.graphql/schema
+   :options {:graphiql true
+             :app-context {:db #ig/ref :duct.database/sql}
+             :env :prod}}}
+
+ :duct.profile/dev #duct/include "dev"
+ :duct.profile/test #duct/include "test"
+ :duct.profile/local #duct/include "local"
+ :duct.profile/prod {}
 
  :duct.module/logging {}
 
  :duct.module/sql
  {:database-url #duct/env "DATABASE_URL"}
 
- :duct.module/pedestal {}
- :duct.server/pedestal
- {:base-service #ig/ref :aqoursql.graphql/service
-  :service #:io.pedestal.http{:join? true
-                              :host #duct/env "SERVER_HOST"
-                              :port #duct/env ["SERVER_PORT" Int :or 8888]}}
-
- :aqoursql.graphql/schema {}
-
- :aqoursql.graphql/service
- {:schema #ig/ref :aqoursql.graphql/schema
-  :options {:graphiql true
-            :app-context {:db #ig/ref :duct.database/sql}
-            :env :prod}}}
+ :duct.module/pedestal {}}

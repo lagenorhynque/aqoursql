@@ -2,21 +2,18 @@
   :description "AqoursQL, an example GraphQL API"
   :url "https://github.com/lagenorhynque/aqoursql"
   :min-lein-version "2.8.1"
-  :dependencies [[com.walmartlabs/lacinia "0.30.0"]
-                 [com.walmartlabs/lacinia-pedestal "0.10.0"]
-                 [duct.module.pedestal "1.0.0"]
-                 [duct/core "0.6.2"]
-                 [duct/database.sql.hikaricp "0.3.3" :exclusions [integrant]]
-                 [duct/module.logging "0.3.1"]
-                 [duct/module.sql "0.4.2"]
-                 [fipp "0.6.14"]
+  :dependencies [[com.walmartlabs/lacinia-pedestal "0.11.0"]
+                 [duct.module.pedestal "2.0.0"]
+                 [duct/core "0.7.0"]
+                 [duct/module.logging "0.4.0"]
+                 [duct/module.sql "0.5.0"]
                  [honeysql "0.9.4"]
                  [io.pedestal/pedestal.jetty "0.5.5"]
                  [io.pedestal/pedestal.service "0.5.5"]
                  [org.clojure/clojure "1.10.0"]
-                 [org.flatland/ordered "1.5.7"]
                  [org.mariadb.jdbc/mariadb-java-client "2.3.0"]]
-  :plugins [[duct/lein-duct "0.10.6"]]
+  :plugins [[duct/lein-duct "0.11.2"]]
+  :middleware [lein-duct.plugin/middleware]
   :main ^:skip-aot aqoursql.main
   :resource-paths ["resources" "target/resources"]
   :prep-tasks     ["javac" "compile" ["run" ":duct/compiler"]]
