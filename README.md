@@ -1,5 +1,8 @@
 # aqoursql
 
+[![CircleCI](https://circleci.com/gh/lagenorhynque/aqoursql.svg?style=shield)](https://circleci.com/gh/lagenorhynque/aqoursql)
+[![codecov](https://codecov.io/gh/lagenorhynque/aqoursql/branch/master/graph/badge.svg)](https://codecov.io/gh/lagenorhynque/aqoursql)
+
 AqoursQL, an example GraphQL API based on [Lacinia-Pedestal](https://github.com/walmartlabs/lacinia-pedestal) & [Duct](https://github.com/duct-framework/duct).
 
 ## Developing
