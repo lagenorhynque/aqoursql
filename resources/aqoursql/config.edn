@@ -1,6 +1,5 @@
 {:duct.profile/base
  {:duct.core/project-ns  aqoursql
-  :duct.core/environment :production
 
   :duct.server/pedestal
   {:base-service #ig/ref :aqoursql.graphql/service
