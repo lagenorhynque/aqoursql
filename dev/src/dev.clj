@@ -12,7 +12,8 @@
             [integrant.core :as ig]
             [integrant.repl :refer [clear halt go init prep]]
             [integrant.repl.state :refer [config system]]
-            [orchestra.spec.test :as stest]))
+            [orchestra.spec.test :as stest]
+            [venia.core :as venia]))
 
 (duct/load-hierarchy)
 
@@ -41,10 +42,11 @@
 
 ;;; GraphQL
 
-(defn q [query-string]
-  (-> system
-      :aqoursql.graphql/schema
-      (lacinia/execute query-string nil nil)))
+(defn q [query]
+  (lacinia/execute (:aqoursql.graphql/schema system)
+                   (venia/graphql-query query)
+                   nil
+                   {:db (:duct.database.sql/hikaricp system)}))
 
 ;;; namespace settings
 

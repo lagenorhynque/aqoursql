@@ -3,7 +3,7 @@
   :url "https://github.com/lagenorhynque/aqoursql"
   :min-lein-version "2.8.1"
   :dependencies [[com.walmartlabs/lacinia-pedestal "0.11.0"]
-                 [duct.module.pedestal "2.0.0"]
+                 [duct.module.pedestal "2.0.1"]
                  [duct/core "0.7.0"]
                  [duct/module.logging "0.4.0"]
                  [duct/module.sql "0.5.0"]
@@ -37,7 +37,7 @@
                                    [vincit/venia "0.2.5"]]
                   :plugins [[jonase/eastwood "0.3.4"]
                             [lein-ancient "0.6.15"]
-                            [lein-cljfmt "0.6.3"]
+                            [lein-cljfmt "0.6.4"]
                             [lein-cloverage "1.0.13"]
                             [lein-codox "0.10.5"]
                             [lein-kibit "0.1.6"]]
