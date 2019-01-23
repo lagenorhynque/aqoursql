@@ -21,20 +21,20 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:song_by_id {:id 1}
-                                                     [:id
-                                                      :name
-                                                      :artist_id
-                                                      [:artist
-                                                       [:id
-                                                        :type
-                                                        :name
-                                                        [:members
-                                                         [:id
-                                                          :name
-                                                          :organization_id
-                                                          :organization_name]]]]
-                                                      :release_date]]]}))]
+                                   #:venia{:queries [[:song_by_id {:id 1}
+                                                      [:id
+                                                       :name
+                                                       :artist_id
+                                                       [:artist
+                                                        [:id
+                                                         :type
+                                                         :name
+                                                         [:members
+                                                          [:id
+                                                           :name
+                                                           :organization_id
+                                                           :organization_name]]]]
+                                                       :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id {:id 1
                                           :name "君のこころは輝いてるかい"
@@ -60,20 +60,20 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:song_by_id {:id 100}
-                                                     [:id
-                                                      :name
-                                                      :artist_id
-                                                      [:artist
-                                                       [:id
-                                                        :type
-                                                        :name
-                                                        [:members
-                                                         [:id
-                                                          :name
-                                                          :organization_id
-                                                          :organization_name]]]]
-                                                      :release_date]]]}))]
+                                   #:venia{:queries [[:song_by_id {:id 100}
+                                                      [:id
+                                                       :name
+                                                       :artist_id
+                                                       [:artist
+                                                        [:id
+                                                         :type
+                                                         :name
+                                                         [:members
+                                                          [:id
+                                                           :name
+                                                           :organization_id
+                                                           :organization_name]]]]
+                                                       :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id nil}}
                      (-> body helper/<-json))))))
@@ -82,15 +82,15 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:song_by_id {:id 1}
-                                                     [:id
-                                                      :name
-                                                      :artist_id
-                                                      [:artist
-                                                       [:id
-                                                        :type
-                                                        :name]]
-                                                      :release_date]]]}))]
+                                   #:venia{:queries [[:song_by_id {:id 1}
+                                                      [:id
+                                                       :name
+                                                       :artist_id
+                                                       [:artist
+                                                        [:id
+                                                         :type
+                                                         :name]]
+                                                       :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id {:id 1
                                           :name "君のこころは輝いてるかい"
@@ -104,15 +104,15 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:song_by_id {:id 100}
-                                                     [:id
-                                                      :name
-                                                      :artist_id
-                                                      [:artist
-                                                       [:id
-                                                        :type
-                                                        :name]]
-                                                      :release_date]]]}))]
+                                   #:venia{:queries [[:song_by_id {:id 100}
+                                                      [:id
+                                                       :name
+                                                       :artist_id
+                                                       [:artist
+                                                        [:id
+                                                         :type
+                                                         :name]]
+                                                       :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id nil}}
                      (-> body helper/<-json))))))
@@ -121,11 +121,11 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:song_by_id {:id 1}
-                                                     [:id
-                                                      :name
-                                                      :artist_id
-                                                      :release_date]]]}))]
+                                   #:venia{:queries [[:song_by_id {:id 1}
+                                                      [:id
+                                                       :name
+                                                       :artist_id
+                                                       :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id {:id 1
                                           :name "君のこころは輝いてるかい"
@@ -136,11 +136,11 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:song_by_id {:id 100}
-                                                     [:id
-                                                      :name
-                                                      :artist_id
-                                                      :release_date]]]}))]
+                                   #:venia{:queries [[:song_by_id {:id 100}
+                                                      [:id
+                                                       :name
+                                                       :artist_id
+                                                       :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id nil}}
                      (-> body helper/<-json)))))))))
@@ -158,20 +158,20 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:songs {:name "輝"}
-                                                       [:id
-                                                        :name
-                                                        :artist_id
-                                                        [:artist
-                                                         [:id
-                                                          :type
-                                                          :name
-                                                          [:members
-                                                           [:id
-                                                            :name
-                                                            :organization_id
-                                                            :organization_name]]]]
-                                                        :release_date]]]}))]
+                                     #:venia{:queries [[:songs {:name "輝"}
+                                                        [:id
+                                                         :name
+                                                         :artist_id
+                                                         [:artist
+                                                          [:id
+                                                           :type
+                                                           :name
+                                                           [:members
+                                                            [:id
+                                                             :name
+                                                             :organization_id
+                                                             :organization_name]]]]
+                                                         :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs [{:id 1
                                         :name "君のこころは輝いてるかい"
@@ -197,20 +197,20 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:songs {:name "空"}
-                                                       [:id
-                                                        :name
-                                                        :artist_id
-                                                        [:artist
-                                                         [:id
-                                                          :type
-                                                          :name
-                                                          [:members
-                                                           [:id
-                                                            :name
-                                                            :organization_id
-                                                            :organization_name]]]]
-                                                        :release_date]]]}))]
+                                     #:venia{:queries [[:songs {:name "空"}
+                                                        [:id
+                                                         :name
+                                                         :artist_id
+                                                         [:artist
+                                                          [:id
+                                                           :type
+                                                           :name
+                                                           [:members
+                                                            [:id
+                                                             :name
+                                                             :organization_id
+                                                             :organization_name]]]]
+                                                         :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs []}}
                        (-> body helper/<-json))))))
@@ -219,15 +219,15 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:songs {:name "輝"}
-                                                       [:id
-                                                        :name
-                                                        :artist_id
-                                                        [:artist
-                                                         [:id
-                                                          :type
-                                                          :name]]
-                                                        :release_date]]]}))]
+                                     #:venia{:queries [[:songs {:name "輝"}
+                                                        [:id
+                                                         :name
+                                                         :artist_id
+                                                         [:artist
+                                                          [:id
+                                                           :type
+                                                           :name]]
+                                                         :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs [{:id 1
                                         :name "君のこころは輝いてるかい"
@@ -241,15 +241,15 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:songs {:name "空"}
-                                                       [:id
-                                                        :name
-                                                        :artist_id
-                                                        [:artist
-                                                         [:id
-                                                          :type
-                                                          :name]]
-                                                        :release_date]]]}))]
+                                     #:venia{:queries [[:songs {:name "空"}
+                                                        [:id
+                                                         :name
+                                                         :artist_id
+                                                         [:artist
+                                                          [:id
+                                                           :type
+                                                           :name]]
+                                                         :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs []}}
                        (-> body helper/<-json))))))
@@ -258,11 +258,11 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:songs {:name "輝"}
-                                                       [:id
-                                                        :name
-                                                        :artist_id
-                                                        :release_date]]]}))]
+                                     #:venia{:queries [[:songs {:name "輝"}
+                                                        [:id
+                                                         :name
+                                                         :artist_id
+                                                         :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs [{:id 1
                                         :name "君のこころは輝いてるかい"
@@ -273,11 +273,11 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:songs {:name "空"}
-                                                       [:id
-                                                        :name
-                                                        :artist_id
-                                                        :release_date]]]}))]
+                                     #:venia{:queries [[:songs {:name "空"}
+                                                        [:id
+                                                         :name
+                                                         :artist_id
+                                                         :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs []}}
                        (-> body helper/<-json)))))))
@@ -285,12 +285,12 @@
         (let [{:keys [status body]}
               (helper/http-post sys "/graphql"
                                 (venia/graphql-query
-                                 {:venia/queries [[:songs
-                                                   [:name
-                                                    [:artist
-                                                     [:name
-                                                      [:members
-                                                       [:name]]]]]]]}))]
+                                 #:venia{:queries [[:songs
+                                                    [:name
+                                                     [:artist
+                                                      [:name
+                                                       [:members
+                                                        [:name]]]]]]]}))]
           (t/is (= 200 status))
           (t/is (= {:data {:songs [{:name "君のこころは輝いてるかい"
                                     :artist {:name "Aqours"

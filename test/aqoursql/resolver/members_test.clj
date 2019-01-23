@@ -17,11 +17,11 @@
         (let [{:keys [status body]}
               (helper/http-post sys "/graphql"
                                 (venia/graphql-query
-                                 {:venia/queries [[:member_by_id {:id 1}
-                                                   [:id
-                                                    :name
-                                                    :organization_id
-                                                    :organization_name]]]}))]
+                                 #:venia{:queries [[:member_by_id {:id 1}
+                                                    [:id
+                                                     :name
+                                                     :organization_id
+                                                     :organization_name]]]}))]
           (t/is (= 200 status))
           (t/is (= {:data {:member_by_id {:id 1
                                           :name "黒澤 ダイヤ"
@@ -32,11 +32,11 @@
         (let [{:keys [status body]}
               (helper/http-post sys "/graphql"
                                 (venia/graphql-query
-                                 {:venia/queries [[:member_by_id {:id 100}
-                                                   [:id
-                                                    :name
-                                                    :organization_id
-                                                    :organization_name]]]}))]
+                                 #:venia{:queries [[:member_by_id {:id 100}
+                                                    [:id
+                                                     :name
+                                                     :organization_id
+                                                     :organization_name]]]}))]
           (t/is (= 200 status))
           (t/is (= {:data {:member_by_id nil}}
                    (-> body helper/<-json))))))))
@@ -50,11 +50,11 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:members {:name "ダイヤ"}
-                                                     [:id
-                                                      :name
-                                                      :organization_id
-                                                      :organization_name]]]}))]
+                                   #:venia{:queries [[:members {:name "ダイヤ"}
+                                                      [:id
+                                                       :name
+                                                       :organization_id
+                                                       :organization_name]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:members [{:id 1
                                         :name "黒澤 ダイヤ"
@@ -64,11 +64,11 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:members {:organization_name "函館"}
-                                                     [:id
-                                                      :name
-                                                      :organization_id
-                                                      :organization_name]]]}))]
+                                   #:venia{:queries [[:members {:organization_name "函館"}
+                                                      [:id
+                                                       :name
+                                                       :organization_id
+                                                       :organization_name]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:members [{:id 4
                                         :name "鹿角 理亞"
@@ -79,22 +79,22 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:members {:name "ルビィ"}
-                                                     [:id
-                                                      :name
-                                                      :organization_id
-                                                      :organization_name]]]}))]
+                                   #:venia{:queries [[:members {:name "ルビィ"}
+                                                      [:id
+                                                       :name
+                                                       :organization_id
+                                                       :organization_name]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:members []}}
                      (-> body helper/<-json))))
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:members {:organization_name "沼津"}
-                                                     [:id
-                                                      :name
-                                                      :organization_id
-                                                      :organization_name]]]}))]
+                                   #:venia{:queries [[:members {:organization_name "沼津"}
+                                                      [:id
+                                                       :name
+                                                       :organization_id
+                                                       :organization_name]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:members []}}
                      (-> body helper/<-json))))))
@@ -102,8 +102,8 @@
         (let [{:keys [status body]}
               (helper/http-post sys "/graphql"
                                 (venia/graphql-query
-                                 {:venia/queries [[:members
-                                                   [:name]]]}))]
+                                 #:venia{:queries [[:members
+                                                    [:name]]]}))]
           (t/is (= 200 status))
           (t/is (= {:data {:members [{:name "黒澤 ダイヤ"}
                                      {:name "渡辺 曜"}

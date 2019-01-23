@@ -20,15 +20,15 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:artist_by_id {:id 1}
-                                                     [:id
-                                                      :type
-                                                      :name
-                                                      [:members
-                                                       [:id
-                                                        :name
-                                                        :organization_id
-                                                        :organization_name]]]]]}))]
+                                   #:venia{:queries [[:artist_by_id {:id 1}
+                                                      [:id
+                                                       :type
+                                                       :name
+                                                       [:members
+                                                        [:id
+                                                         :name
+                                                         :organization_id
+                                                         :organization_name]]]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:artist_by_id {:id 1
                                             :type 1
@@ -50,15 +50,15 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:artist_by_id {:id 100}
-                                                     [:id
-                                                      :type
-                                                      :name
-                                                      [:members
-                                                       [:id
-                                                        :name
-                                                        :organization_id
-                                                        :organization_name]]]]]}))]
+                                   #:venia{:queries [[:artist_by_id {:id 100}
+                                                      [:id
+                                                       :type
+                                                       :name
+                                                       [:members
+                                                        [:id
+                                                         :name
+                                                         :organization_id
+                                                         :organization_name]]]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:artist_by_id nil}}
                      (-> body helper/<-json))))))
@@ -67,10 +67,10 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:artist_by_id {:id 1}
-                                                     [:id
-                                                      :type
-                                                      :name]]]}))]
+                                   #:venia{:queries [[:artist_by_id {:id 1}
+                                                      [:id
+                                                       :type
+                                                       :name]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:artist_by_id {:id 1
                                             :type 1
@@ -80,10 +80,10 @@
           (let [{:keys [status body]}
                 (helper/http-post sys "/graphql"
                                   (venia/graphql-query
-                                   {:venia/queries [[:artist_by_id {:id 100}
-                                                     [:id
-                                                      :type
-                                                      :name]]]}))]
+                                   #:venia{:queries [[:artist_by_id {:id 100}
+                                                      [:id
+                                                       :type
+                                                       :name]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:artist_by_id nil}}
                      (-> body helper/<-json)))))))))
@@ -100,15 +100,15 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:artists {:name "Aq"}
-                                                       [:id
-                                                        :type
-                                                        :name
-                                                        [:members
-                                                         [:id
-                                                          :name
-                                                          :organization_id
-                                                          :organization_name]]]]]}))]
+                                     #:venia{:queries [[:artists {:name "Aq"}
+                                                        [:id
+                                                         :type
+                                                         :name
+                                                         [:members
+                                                          [:id
+                                                           :name
+                                                           :organization_id
+                                                           :organization_name]]]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:artists [{:id 1
                                           :type 1
@@ -149,15 +149,15 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:artists {:name "μ"}
-                                                       [:id
-                                                        :type
-                                                        :name
-                                                        [:members
-                                                         [:id
-                                                          :name
-                                                          :organization_id
-                                                          :organization_name]]]]]}))]
+                                     #:venia{:queries [[:artists {:name "μ"}
+                                                        [:id
+                                                         :type
+                                                         :name
+                                                         [:members
+                                                          [:id
+                                                           :name
+                                                           :organization_id
+                                                           :organization_name]]]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:artists []}}
                        (-> body helper/<-json))))))
@@ -166,10 +166,10 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:artists {:name "Aq"}
-                                                       [:id
-                                                        :type
-                                                        :name]]]}))]
+                                     #:venia{:queries [[:artists {:name "Aq"}
+                                                        [:id
+                                                         :type
+                                                         :name]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:artists [{:id 1
                                           :type 1
@@ -182,10 +182,10 @@
             (let [{:keys [status body]}
                   (helper/http-post sys "/graphql"
                                     (venia/graphql-query
-                                     {:venia/queries [[:artists {:name "μ"}
-                                                       [:id
-                                                        :type
-                                                        :name]]]}))]
+                                     #:venia{:queries [[:artists {:name "μ"}
+                                                        [:id
+                                                         :type
+                                                         :name]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:artists []}}
                        (-> body helper/<-json)))))))
@@ -193,10 +193,10 @@
         (let [{:keys [status body]}
               (helper/http-post sys "/graphql"
                                 (venia/graphql-query
-                                 {:venia/queries [[:artists
-                                                   [:name
-                                                    [:members
-                                                     [:name]]]]]}))]
+                                 #:venia{:queries [[:artists
+                                                    [:name
+                                                     [:members
+                                                      [:name]]]]]}))]
           (t/is (= 200 status))
           (t/is (= {:data {:artists [{:name "Aqours"
                                       :members [{:name "黒澤 ダイヤ"}
