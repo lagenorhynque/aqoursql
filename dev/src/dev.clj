@@ -42,11 +42,13 @@
 
 ;;; GraphQL
 
-(defn q [query]
-  (lacinia/execute (:aqoursql.graphql/schema system)
-                   (venia/graphql-query query)
-                   nil
-                   {:db (:duct.database.sql/hikaricp system)}))
+(defn q
+  ([query] (q query nil))
+  ([query variables]
+   (lacinia/execute (:aqoursql.graphql/schema system)
+                    (venia/graphql-query query)
+                    variables
+                    {:db (:duct.database.sql/hikaricp system)})))
 
 ;;; namespace settings
 
