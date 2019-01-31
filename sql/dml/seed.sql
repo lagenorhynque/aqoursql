@@ -57,7 +57,7 @@ INSERT INTO artist_member (artist_id, member_id) VALUES
   (6, 11);
 
 INSERT INTO song (id, name, artist_id, release_date) VALUES
-  (1, '君のこころは輝いてるかい', 1, '2015-10-07'),
+  (1, '君のこころは輝いてるかい？', 1, '2015-10-07'),
   (2, '恋になりたいAQUARIUM', 1, '2016-04-27'),
   (3, 'HAPPY PARTY TRAIN', 1, '2017-04-05'),
   (4, '元気全開DAY！DAY！DAY！', 2, '2016-05-11'),

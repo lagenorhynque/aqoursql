@@ -66,7 +66,7 @@
 
 (def song
   [{:id 1
-    :name "君のこころは輝いてるかい"
+    :name "君のこころは輝いてるかい？"
     :artist_id 1
     :release_date #inst "2015-10-07"}
    {:id 2

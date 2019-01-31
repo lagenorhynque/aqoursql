@@ -37,7 +37,7 @@
                                                        :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id {:id 1
-                                          :name "君のこころは輝いてるかい"
+                                          :name "君のこころは輝いてるかい？"
                                           :artist_id 1
                                           :artist {:id 1
                                                    :type 1
@@ -93,7 +93,7 @@
                                                        :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id {:id 1
-                                          :name "君のこころは輝いてるかい"
+                                          :name "君のこころは輝いてるかい？"
                                           :artist_id 1
                                           :artist {:id 1
                                                    :type 1
@@ -128,7 +128,7 @@
                                                        :release_date]]]}))]
             (t/is (= 200 status))
             (t/is (= {:data {:song_by_id {:id 1
-                                          :name "君のこころは輝いてるかい"
+                                          :name "君のこころは輝いてるかい？"
                                           :artist_id 1
                                           :release_date "2015-10-07"}}}
                      (-> body helper/<-json)))))
@@ -174,7 +174,7 @@
                                                          :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs [{:id 1
-                                        :name "君のこころは輝いてるかい"
+                                        :name "君のこころは輝いてるかい？"
                                         :artist_id 1
                                         :artist {:id 1
                                                  :type 1
@@ -230,7 +230,7 @@
                                                          :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs [{:id 1
-                                        :name "君のこころは輝いてるかい"
+                                        :name "君のこころは輝いてるかい？"
                                         :artist_id 1
                                         :artist {:id 1
                                                  :type 1
@@ -265,7 +265,7 @@
                                                          :release_date]]]}))]
               (t/is (= 200 status))
               (t/is (= {:data {:songs [{:id 1
-                                        :name "君のこころは輝いてるかい"
+                                        :name "君のこころは輝いてるかい？"
                                         :artist_id 1
                                         :release_date "2015-10-07"}]}}
                        (-> body helper/<-json)))))
@@ -292,7 +292,7 @@
                                                        [:members
                                                         [:name]]]]]]]}))]
           (t/is (= 200 status))
-          (t/is (= {:data {:songs [{:name "君のこころは輝いてるかい"
+          (t/is (= {:data {:songs [{:name "君のこころは輝いてるかい？"
                                     :artist {:name "Aqours"
                                              :members [{:name "黒澤 ダイヤ"}
                                                        {:name "渡辺 曜"}
