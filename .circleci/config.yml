@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: /root/aqoursql
     docker:
-    - image: clojure:lein-2.8.1-alpine
+    - image: clojure:lein-2.9.1-alpine
       environment:
         TZ: Asia/Tokyo
         TEST_DATABASE_URL: "jdbc:mysql://localhost:3306/aqoursql_test?user=aqoursql_dev&password=password123"

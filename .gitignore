@@ -13,3 +13,4 @@ pom.xml.asc
 /dev/resources/local.edn
 /dev/src/local.clj
 .rebel_readline_history
+.eastwood

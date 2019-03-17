@@ -11,7 +11,7 @@
                  [io.pedestal/pedestal.jetty "0.5.5"]
                  [io.pedestal/pedestal.service "0.5.5"]
                  [org.clojure/clojure "1.10.0"]
-                 [org.mariadb.jdbc/mariadb-java-client "2.4.0"]]
+                 [org.mariadb.jdbc/mariadb-java-client "2.4.1"]]
   :plugins [[duct/lein-duct "0.11.2"]]
   :middleware [lein-duct.plugin/middleware]
   :main ^:skip-aot aqoursql.main
@@ -38,7 +38,7 @@
                   :plugins [[jonase/eastwood "0.3.5"]
                             [lein-ancient "0.6.15"]
                             [lein-cljfmt "0.6.4"]
-                            [lein-cloverage "1.1.0"]
+                            [lein-cloverage "1.1.1"]
                             [lein-codox "0.10.6"]
                             [lein-kibit "0.1.6"]]
                   :aliases {"rebel" ^{:doc "Run REPL with rebel-readline."}
