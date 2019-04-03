@@ -12,7 +12,7 @@
                  [io.pedestal/pedestal.service "0.5.5"]
                  [org.clojure/clojure "1.10.0"]
                  [org.mariadb.jdbc/mariadb-java-client "2.4.1"]]
-  :plugins [[duct/lein-duct "0.11.2"]]
+  :plugins [[duct/lein-duct "0.12.0"]]
   :middleware [lein-duct.plugin/middleware]
   :main ^:skip-aot aqoursql.main
   :resource-paths ["resources" "target/resources"]
