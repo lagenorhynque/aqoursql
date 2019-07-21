@@ -131,6 +131,6 @@ $ open target/codox/index.html
 ### GraphQL execution ([GraphiQL](https://github.com/graphql/graphiql))
 
 ```sh
-# After staring the server
+# After starting the server
 $ open http://localhost:8888
 ```
