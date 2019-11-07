@@ -3,7 +3,7 @@
   :url "https://github.com/lagenorhynque/aqoursql"
   :min-lein-version "2.8.1"
   :dependencies [[com.walmartlabs/lacinia-pedestal "0.12.0"]
-                 [duct.module.cambium "0.1.0"]
+                 [duct.module.cambium "1.0.0"]
                  [duct.module.pedestal "2.0.2"]
                  [duct/core "0.7.0"]
                  [duct/module.sql "0.5.0"]
