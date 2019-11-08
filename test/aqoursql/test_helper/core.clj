@@ -7,7 +7,8 @@
             [clojure.spec.alpha :as s]
             [duct.core :as duct]
             [integrant.core :as ig]
-            [orchestra.spec.test :as stest]))
+            [orchestra.spec.test :as stest]
+            [venia.core :as venia]))
 
 (duct/load-hierarchy)
 
@@ -59,9 +60,28 @@
 (defn http-post [system url body & {:as options}]
   (client/post (str url-prefix (server-port system) url)
                (merge {:body body
-                       :content-type :application/graphql
+                       :content-type :json
                        :accept :json
                        :throw-exceptions? false} options)))
+
+;;; GraphQL utilities
+
+(defn- query-json [q]
+  (-> q
+      (update :query venia/graphql-query)
+      cheshire/generate-string))
+
+(s/def ::query (s/map-of keyword? any?))
+(s/def ::variables (s/map-of keyword? any?))
+(s/def ::q (s/keys :req-un [::query]
+                   :opt-un [::variables]))
+
+(s/fdef run-query
+  :args (s/cat :system any?
+               :q ::q))
+
+(defn run-query [system q]
+  (http-post system "/graphql" (query-json q)))
 
 ;;; JSON conversion
 
