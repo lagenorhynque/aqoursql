@@ -1,8 +1,10 @@
 (ns aqoursql.resolver.songs
   (:require [aqoursql.boundary.db.member :as db.member]
             [aqoursql.boundary.db.song :as db.song]
+            [aqoursql.util.validator :refer [when-valid]]
             [clojure.set :as set]
-            [com.walmartlabs.lacinia.executor :as executor]))
+            [com.walmartlabs.lacinia.executor :as executor]
+            [struct.core :as st]))
 
 (defn- song-with-artist [song]
   (let [artist (-> song
@@ -28,21 +30,22 @@
     (db.song/find-song-by-id db args)))
 
 (defn list-songs [{:keys [db] :as context} args _]
-  (cond
-    (executor/selects-field? context :Artist/members)
-    (if-let [songs (seq (db.song/find-songs db (assoc args :with-artist? true)))]
-      (let [members-map (group-by :artist_id
-                                  (db.member/find-members db {:artist_ids (distinct (map :artist_id songs))}))]
-        (map (fn [{:keys [artist_id] :as song}]
-               (-> song
-                   song-with-artist
-                   (assoc-in [:artist :members] (get members-map artist_id))))
-             songs))
-      [])
+  (when-valid [[] args [[:name [st/min-count 1]]]]
+    (cond
+      (executor/selects-field? context :Artist/members)
+      (if-let [songs (seq (db.song/find-songs db (assoc args :with-artist? true)))]
+        (let [members-map (group-by :artist_id
+                                    (db.member/find-members db {:artist_ids (distinct (map :artist_id songs))}))]
+          (map (fn [{:keys [artist_id] :as song}]
+                 (-> song
+                     song-with-artist
+                     (assoc-in [:artist :members] (get members-map artist_id))))
+               songs))
+        [])
 
-    (executor/selects-field? context :Song/artist)
-    (map song-with-artist
-         (db.song/find-songs db (assoc args :with-artist? true)))
+      (executor/selects-field? context :Song/artist)
+      (map song-with-artist
+           (db.song/find-songs db (assoc args :with-artist? true)))
 
-    :else
-    (db.song/find-songs db args)))
+      :else
+      (db.song/find-songs db args))))

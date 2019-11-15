@@ -1,6 +1,5 @@
 (ns aqoursql.test-helper.core
-  (:require [aqoursql.boundary.db.core :as db]
-            [aqoursql.test-helper.db :refer [insert-db-data! truncate-all-tables!]]
+  (:require [aqoursql.test-helper.db :refer [insert-db-data! truncate-all-tables!]]
             [cheshire.core :as cheshire]
             [clj-http.client :as client]
             [clojure.java.io :as io]
@@ -90,3 +89,8 @@
 
 (defn <-json [str]
   (cheshire/parse-string str true))
+
+;;; misc.
+
+(defn nth-errors [json index]
+  (-> json <-json :errors (nth index)))
