@@ -2,11 +2,14 @@
   :description "AqoursQL, an example GraphQL API"
   :url "https://github.com/lagenorhynque/aqoursql"
   :min-lein-version "2.8.1"
-  :dependencies [[com.walmartlabs/lacinia-pedestal "0.12.0"]
+  :dependencies [[camel-snake-kebab "0.4.0"]
+                 [clojure.java-time "0.3.2"]
+                 [com.walmartlabs/lacinia-pedestal "0.12.0"]
                  [duct.module.cambium "1.0.0"]
                  [duct.module.pedestal "2.0.2"]
                  [duct/core "0.7.0"]
                  [duct/module.sql "0.5.0"]
+                 [funcool/struct "1.4.0" :exclusions [org.clojure/clojurescript]]
                  [honeysql "0.9.8"]
                  [io.pedestal/pedestal.jetty "0.5.7"]
                  [io.pedestal/pedestal.service "0.5.7"]
@@ -37,7 +40,7 @@
                                    [vincit/venia "0.2.5"]]
                   :plugins [[jonase/eastwood "0.3.6"]
                             [lein-ancient "0.6.15"]
-                            [lein-cljfmt "0.6.4"]
+                            [lein-cljfmt "0.6.5"]
                             [lein-cloverage "1.1.2"]
                             [lein-codox "0.10.7"]
                             [lein-kibit "0.1.7"]]
@@ -55,7 +58,8 @@
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]
                   :cljfmt {:indents {fdef [[:inner 0]]
-                                     for-all [[:inner 0]]}}
+                                     for-all [[:inner 0]]
+                                     when-valid [[:inner 0]]}}
                   :codox {:output-path "target/codox"
                           :source-uri "https://github.com/lagenorhynque/aqoursql/blob/master/{filepath}#L{line}"
                           :metadata {:doc/format :markdown}}}

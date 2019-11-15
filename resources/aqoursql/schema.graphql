@@ -1,0 +1,101 @@
+### schema
+
+schema {
+  query: Query
+}
+
+### types
+
+"""
+アーティスト
+"""
+type Artist {
+  id: Int!
+  type: Int!
+  name: String!
+  members: [Member!]!
+}
+
+"""
+メンバー
+"""
+type Member {
+  "メンバーID"
+  id: Int!
+  "メンバー名"
+  name: String!
+  "所属組織ID"
+  organization_id: Int!
+  "所属組織名"
+  organization_name: String!
+}
+
+type Query {
+  """
+  IDによるアーティスト取得
+  """
+  artist_by_id(
+    "アーティストID"
+    id: Int!
+  ): Artist
+
+  """
+  アーティスト一覧取得
+  """
+  artists(
+    "アーティストタイプ (1: グループ, 2: ソロ)"
+    type: Int
+    "アーティスト名 (部分一致)"
+    name: String
+  ): [Artist!]!
+
+  """
+  IDによるメンバー取得
+  """
+  member_by_id(
+    "メンバーID"
+    id: Int!
+  ): Member
+
+  """
+  メンバー一覧取得
+  """
+  members(
+    "メンバー名 (部分一致)"
+    name: String
+    "所属組織名 (部分一致)"
+    organization_name: String
+  ): [Member!]!
+
+  """
+  IDによる楽曲取得
+  """
+  song_by_id(
+    "楽曲ID"
+    id: Int!
+  ): Song
+
+  """
+  楽曲一覧取得
+  """
+  songs(
+    "楽曲名 (部分一致)"
+    name: String
+  ): [Song!]!
+}
+
+"""
+楽曲
+"""
+type Song {
+  "楽曲ID"
+  id: Int!
+  "楽曲名"
+  name: String!
+  "アーティストID"
+  artist_id: Int!
+  "アーティスト"
+  artist: Artist!
+  "リリース日 (YYYY-MM-DD)"
+  release_date: String!
+}

@@ -7,7 +7,8 @@
                                :host #duct/env "SERVER_HOST"
                                :port #duct/env ["SERVER_PORT" Int :or 8888]}}
 
-  :aqoursql.graphql/schema {}
+  :aqoursql.graphql/schema
+  {:path "aqoursql/schema.graphql"}
 
   :aqoursql.graphql/service
   {:schema #ig/ref :aqoursql.graphql/schema
