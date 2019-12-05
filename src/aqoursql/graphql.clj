@@ -24,4 +24,6 @@
 
 (defmethod ig/init-key ::service
   [_ {:keys [schema options]}]
-  (lacinia.pedestal/service-map (schema/compile schema) options))
+  (-> schema
+      schema/compile
+      (lacinia.pedestal/service-map options)))

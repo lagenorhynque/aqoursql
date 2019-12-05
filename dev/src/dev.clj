@@ -5,6 +5,7 @@
             [clojure.spec.alpha :as s]
             [clojure.tools.namespace.repl :refer [refresh]]
             [com.walmartlabs.lacinia :as lacinia]
+            [com.walmartlabs.lacinia.schema :as schema]
             [duct.core :as duct]
             [duct.core.repl :as duct-repl]
             [eftest.runner :as eftest]
@@ -45,7 +46,7 @@
 (defn q
   ([query] (q query nil))
   ([query variables]
-   (lacinia/execute (:aqoursql.graphql/schema system)
+   (lacinia/execute (schema/compile (:aqoursql.graphql/schema system))
                     (venia/graphql-query query)
                     variables
                     {:db (:duct.database.sql/hikaricp system)})))
