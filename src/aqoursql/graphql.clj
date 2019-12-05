@@ -6,7 +6,8 @@
             [com.walmartlabs.lacinia.parser.schema :as parser.schema]
             [com.walmartlabs.lacinia.pedestal :as lacinia.pedestal]
             [com.walmartlabs.lacinia.schema :as schema]
-            [integrant.core :as ig]))
+            [integrant.core :as ig]
+            [io.pedestal.http :as http]))
 
 (def attach-map
   {:resolvers {:Query {:artist_by_id artists/fetch-artist-by-id
@@ -26,4 +27,5 @@
   [_ {:keys [schema options]}]
   (-> schema
       schema/compile
-      (lacinia.pedestal/service-map options)))
+      (lacinia.pedestal/service-map options)
+      (merge {::http/allowed-origins (constantly true)})))
