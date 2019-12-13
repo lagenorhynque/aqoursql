@@ -6,7 +6,7 @@
                  [clojure.java-time "0.3.2"]
                  [com.walmartlabs/lacinia-pedestal "0.12.0"]
                  [duct.module.cambium "1.1.0" :exclusions [org.slf4j/slf4j-api]]
-                 [duct.module.pedestal "2.1.0"]
+                 [duct.module.pedestal "2.1.1"]
                  [duct/core "0.8.0"]
                  [duct/module.sql "0.6.0"]
                  [funcool/struct "1.4.0" :exclusions [org.clojure/clojurescript]]
