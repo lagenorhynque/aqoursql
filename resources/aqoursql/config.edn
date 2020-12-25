@@ -3,7 +3,8 @@
 
   :duct.server/pedestal
   {:base-service #ig/ref :aqoursql.graphql/service
-   :service #:io.pedestal.http{:join? true
+   :service #:io.pedestal.http{:type :jetty
+                               :join? true
                                :host #duct/env "SERVER_HOST"
                                :port #duct/env ["SERVER_PORT" Int :or 8888]}}
 
@@ -12,7 +13,10 @@
 
   :aqoursql.graphql/service
   {:schema #ig/ref :aqoursql.graphql/schema
-   :options {:graphiql true
+   :options {:api-path "/graphql"
+             :subscriptions-path "/graphql-ws"
+             :ide-path "/"
+             :asset-path "/assets/graphiql"
              :app-context {:db #ig/ref :duct.database/sql}
              :env :prod}}}
 
