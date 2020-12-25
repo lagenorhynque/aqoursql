@@ -1,13 +1,16 @@
 (ns aqoursql.test-helper.db
-  (:require [aqoursql.boundary.db.core :as db]
-            [clojure.java.jdbc :as jdbc]
-            [clojure.spec.alpha :as s]
-            [honeysql.core :as sql]))
+  (:require
+   [aqoursql.boundary.db.core :as db]
+   [clojure.java.jdbc :as jdbc]
+   [clojure.spec.alpha :as s]
+   [honeysql.core :as sql]))
 
 (s/def ::name string?)
 (s/def ::table (s/keys :req-un [::name]))
-(s/def ::db-data-map (s/map-of keyword?
-                               (s/coll-of ::db/row-map :min-count 1)))
+
+(s/def ::db-data-map
+  (s/map-of keyword?
+            (s/coll-of ::db/row-map :min-count 1)))
 
 (s/fdef select-tables
   :args (s/cat :db ::db/db)

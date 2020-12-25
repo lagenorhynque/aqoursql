@@ -1,10 +1,11 @@
 (ns aqoursql.boundary.db.song
-  (:require [aqoursql.boundary.db.artist :as artist]
-            [aqoursql.boundary.db.core :as db]
-            [clojure.spec.alpha :as s]
-            [duct.database.sql]
-            [honeysql.core :as sql]
-            [honeysql.helpers :refer [merge-join merge-order-by merge-select merge-where]]))
+  (:require
+   [aqoursql.boundary.db.artist :as artist]
+   [aqoursql.boundary.db.core :as db]
+   [clojure.spec.alpha :as s]
+   [duct.database.sql]
+   [honeysql.core :as sql]
+   [honeysql.helpers :refer [merge-join merge-order-by merge-select merge-where]]))
 
 (s/def ::id nat-int?)
 (s/def ::name string?)

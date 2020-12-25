@@ -1,8 +1,9 @@
 (ns aqoursql.util.validator
-  (:require [aqoursql.util.const :as const]
-            [clojure.spec.alpha :as s]
-            [com.walmartlabs.lacinia.resolve :refer [resolve-as]]
-            [struct.core :as st]))
+  (:require
+   [aqoursql.util.const :as const]
+   [clojure.spec.alpha :as s]
+   [com.walmartlabs.lacinia.resolve :refer [resolve-as]]
+   [struct.core :as st]))
 
 ;;; validation utilities
 

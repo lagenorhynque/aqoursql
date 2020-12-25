@@ -1,13 +1,14 @@
 (ns aqoursql.test-helper.core
-  (:require [aqoursql.test-helper.db :refer [insert-db-data! truncate-all-tables!]]
-            [cheshire.core :as cheshire]
-            [clj-http.client :as client]
-            [clojure.java.io :as io]
-            [clojure.spec.alpha :as s]
-            [duct.core :as duct]
-            [integrant.core :as ig]
-            [orchestra.spec.test :as stest]
-            [venia.core :as venia]))
+  (:require
+   [aqoursql.test-helper.db :refer [insert-db-data! truncate-all-tables!]]
+   [cheshire.core :as cheshire]
+   [clj-http.client :as client]
+   [clojure.java.io :as io]
+   [clojure.spec.alpha :as s]
+   [duct.core :as duct]
+   [integrant.core :as ig]
+   [orchestra.spec.test :as stest]
+   [venia.core :as venia]))
 
 (duct/load-hierarchy)
 
@@ -72,8 +73,10 @@
 
 (s/def ::query (s/map-of keyword? any?))
 (s/def ::variables (s/map-of keyword? any?))
-(s/def ::q (s/keys :req-un [::query]
-                   :opt-un [::variables]))
+
+(s/def ::q
+  (s/keys :req-un [::query]
+          :opt-un [::variables]))
 
 (s/fdef run-query
   :args (s/cat :system any?

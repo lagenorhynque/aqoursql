@@ -44,7 +44,6 @@
                                    [vincit/venia "0.2.5"]]
                   :plugins [[jonase/eastwood "0.3.12"]
                             [lein-ancient "0.6.15"]
-                            [lein-cljfmt "0.7.0"]
                             [lein-cloverage "1.2.1"]
                             [lein-codox "0.10.7"]
                             [lein-kibit "0.1.8"]]
@@ -52,9 +51,8 @@
                             ["trampoline" "run" "-m" "rebel-readline.main"]
                             "test-coverage" ^{:doc "Execute cloverage."}
                             ["cloverage" "--ns-exclude-regex" "^(:?dev|user)$" "--codecov" "--junit"]
-                            "lint" ^{:doc "Execute cljfmt check, eastwood and kibit."}
+                            "lint" ^{:doc "Execute eastwood and kibit."}
                             ["do"
-                             ["cljfmt" "check"]
                              ["eastwood" "{:config-files [\"dev/resources/eastwood_config.clj\"]
                                            :source-paths [\"src\"]
                                            :test-paths []}"]

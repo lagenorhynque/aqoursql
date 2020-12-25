@@ -1,9 +1,10 @@
 (ns aqoursql.resolver.artists
-  (:require [aqoursql.boundary.db.artist :as db.artist]
-            [aqoursql.boundary.db.member :as db.member]
-            [aqoursql.util.validator :refer [when-valid]]
-            [com.walmartlabs.lacinia.executor :as executor]
-            [struct.core :as st]))
+  (:require
+   [aqoursql.boundary.db.artist :as db.artist]
+   [aqoursql.boundary.db.member :as db.member]
+   [aqoursql.util.validator :refer [when-valid]]
+   [com.walmartlabs.lacinia.executor :as executor]
+   [struct.core :as st]))
 
 (defn fetch-artist-by-id [{:keys [db] :as context} {:keys [id]} _]
   (when-let [artist (db.artist/find-artist-by-id db id)]

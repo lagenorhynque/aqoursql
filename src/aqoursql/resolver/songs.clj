@@ -1,10 +1,11 @@
 (ns aqoursql.resolver.songs
-  (:require [aqoursql.boundary.db.member :as db.member]
-            [aqoursql.boundary.db.song :as db.song]
-            [aqoursql.util.validator :refer [when-valid]]
-            [clojure.set :as set]
-            [com.walmartlabs.lacinia.executor :as executor]
-            [struct.core :as st]))
+  (:require
+   [aqoursql.boundary.db.member :as db.member]
+   [aqoursql.boundary.db.song :as db.song]
+   [aqoursql.util.validator :refer [when-valid]]
+   [clojure.set :as set]
+   [com.walmartlabs.lacinia.executor :as executor]
+   [struct.core :as st]))
 
 (defn- song-with-artist [song]
   (let [artist (-> song

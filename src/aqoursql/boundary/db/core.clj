@@ -1,8 +1,9 @@
 (ns aqoursql.boundary.db.core
-  (:require [clojure.java.jdbc :as jdbc]
-            [clojure.spec.alpha :as s]
-            [duct.database.sql]
-            [honeysql.core :as sql]))
+  (:require
+   [clojure.java.jdbc :as jdbc]
+   [clojure.spec.alpha :as s]
+   [duct.database.sql]
+   [honeysql.core :as sql]))
 
 ;;; DB access utilities
 
@@ -16,6 +17,7 @@
 
 (def quoting
   :mysql)
+
 (def identifier-quote
   \`)
 

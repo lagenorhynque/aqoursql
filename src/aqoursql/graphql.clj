@@ -1,13 +1,14 @@
 (ns aqoursql.graphql
-  (:require [aqoursql.resolver.artists :as artists]
-            [aqoursql.resolver.members :as members]
-            [aqoursql.resolver.songs :as songs]
-            [clojure.java.io :as io]
-            [com.walmartlabs.lacinia.parser.schema :as parser.schema]
-            [com.walmartlabs.lacinia.pedestal :as lacinia.pedestal]
-            [com.walmartlabs.lacinia.schema :as schema]
-            [integrant.core :as ig]
-            [io.pedestal.http :as http]))
+  (:require
+   [aqoursql.resolver.artists :as artists]
+   [aqoursql.resolver.members :as members]
+   [aqoursql.resolver.songs :as songs]
+   [clojure.java.io :as io]
+   [com.walmartlabs.lacinia.parser.schema :as parser.schema]
+   [com.walmartlabs.lacinia.pedestal :as lacinia.pedestal]
+   [com.walmartlabs.lacinia.schema :as schema]
+   [integrant.core :as ig]
+   [io.pedestal.http :as http]))
 
 (def attach-map
   {:resolvers {:Query {:artist_by_id artists/fetch-artist-by-id

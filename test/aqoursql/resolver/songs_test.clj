@@ -1,10 +1,10 @@
 (ns aqoursql.resolver.songs-test
-  (:require [aqoursql.resolver.songs :as sut]
-            [aqoursql.test-helper.core :as helper :refer [with-db-data with-system]]
-            [aqoursql.test-helper.db-data :as db-data]
-            [aqoursql.util.const :as const]
-            [clojure.string :as str]
-            [clojure.test :as t]))
+  (:require
+   [aqoursql.test-helper.core :as helper :refer [with-db-data with-system]]
+   [aqoursql.test-helper.db-data :as db-data]
+   [aqoursql.util.const :as const]
+   [clojure.string :as str]
+   [clojure.test :as t]))
 
 (t/use-fixtures
   :once
