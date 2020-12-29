@@ -2,10 +2,9 @@
   (:require
    [aqoursql.boundary.db.member :as db.member]
    [aqoursql.boundary.db.song :as db.song]
-   [aqoursql.util.validator :refer [when-valid]]
+   [aqoursql.util.validator :as validator :refer [when-valid]]
    [clojure.set :as set]
-   [com.walmartlabs.lacinia.executor :as executor]
-   [struct.core :as st]))
+   [com.walmartlabs.lacinia.executor :as executor]))
 
 (defn- song-with-artist [song]
   (let [artist (-> song
@@ -31,7 +30,8 @@
     (db.song/find-song-by-id db args)))
 
 (defn list-songs [{:keys [db] :as context} args _]
-  (when-valid [[] args [[:name [st/min-count 1]]]]
+  (when-valid [[] args [:map
+                        [:name {:optional true} validator/schema-maybe-non-empty-string]]]
     (cond
       (executor/selects-field? context :Artist/members)
       (if-let [songs (seq (db.song/find-songs db (assoc args :with-artist? true)))]

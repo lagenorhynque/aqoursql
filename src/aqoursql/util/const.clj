@@ -6,3 +6,7 @@
 
 (def error-code-validation
   "VALIDATION_ERROR")
+
+(defn error-map [code message]
+  {:message message
+   :extensions {:code code}})

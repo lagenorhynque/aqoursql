@@ -10,10 +10,10 @@
                  [duct/core "0.8.0" :exclusions [integrant
                                                  medley]]
                  [duct/module.sql "0.6.1"]
-                 [funcool/struct "1.4.0" :exclusions [org.clojure/clojurescript]]
                  [honeysql "1.0.444"]
                  [io.pedestal/pedestal.jetty "0.5.8"]
                  [io.pedestal/pedestal.service "0.5.8" :exclusions [cheshire]]
+                 [metosin/malli "0.2.1"]
                  [org.clojure/clojure "1.10.1"]
                  [org.clojure/java.jdbc "0.7.11"]
                  [org.mariadb.jdbc/mariadb-java-client "2.7.1"]]
