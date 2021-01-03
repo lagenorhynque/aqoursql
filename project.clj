@@ -59,9 +59,6 @@
                              ["kibit"]]}
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]
-                  :cljfmt {:indents {fdef [[:inner 0]]
-                                     for-all [[:inner 0]]
-                                     when-valid [[:inner 0]]}}
                   :codox {:output-path "target/codox"
                           :source-uri "https://github.com/lagenorhynque/aqoursql/blob/master/{filepath}#L{line}"
                           :metadata {:doc/format :markdown}}}
