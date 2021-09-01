@@ -19,7 +19,7 @@
 
 (s/fdef when-valid
   :args (s/cat :binding (s/coll-of any?
-                                   :kind vector
+                                   :kind vector?
                                    :count 3)
                :body (s/* any?)))
 

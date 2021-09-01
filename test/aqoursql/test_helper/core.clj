@@ -27,7 +27,7 @@
 
 (s/fdef with-system
   :args (s/cat :binding (s/coll-of any?
-                                   :kind vector
+                                   :kind vector?
                                    :count 2)
                :body (s/* any?)))
 
@@ -39,7 +39,7 @@
 
 (s/fdef with-db-data
   :args (s/cat :binding (s/coll-of any?
-                                   :kind vector
+                                   :kind vector?
                                    :count 2)
                :body (s/* any?)))
 
