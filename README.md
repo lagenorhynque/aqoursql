@@ -10,7 +10,7 @@ AqoursQL, an example GraphQL API based on [Lacinia-Pedestal](https://github.com/
 ### Prerequisites
 
 - [Java (JDK)](http://openjdk.java.net/)
-    - `java -version` >= 8 (1.8.0)
+    - `java --version` >= 11
 - [Leiningen](https://leiningen.org/)
 - [Docker](https://www.docker.com/)
 
@@ -29,12 +29,12 @@ for the project.
 
 ```sh
 # Start local DB
-$ docker-compose up -d
+$ docker compose up -d
 # Import DB schema
-$ docker-compose exec -T mysql mysql -uroot -proot aqoursql < sql/ddl/aqoursql.sql
-$ docker-compose exec -T mysql-test mysql -uroot -proot aqoursql_test < sql/ddl/aqoursql.sql
+$ docker compose exec -T mysql mysql -uroot -proot aqoursql < sql/ddl/aqoursql.sql
+$ docker compose exec -T mysql-test mysql -uroot -proot aqoursql_test < sql/ddl/aqoursql.sql
 # Seed DB
-$ docker-compose exec -T mysql mysql -uroot -proot aqoursql < sql/dml/seed.sql
+$ docker compose exec -T mysql mysql -uroot -proot aqoursql < sql/dml/seed.sql
 ```
 
 ### Development environment
