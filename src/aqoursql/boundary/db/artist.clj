@@ -4,8 +4,7 @@
    [aqoursql.util.const :as const]
    [clojure.spec.alpha :as s]
    [duct.database.sql]
-   [honeysql.core :as sql]
-   [honeysql.helpers :refer [merge-order-by merge-where]]))
+   [honey.sql.helpers :refer [order-by where]]))
 
 (s/def ::id nat-int?)
 (s/def ::type const/artist-types)
@@ -32,16 +31,15 @@
   (find-artists [db tx-data]))
 
 (def sql-artist
-  (sql/build
-   :select :a.*
-   :from [[:artist :a]]))
+  {:select :a.*
+   :from [[:artist :a]]})
 
 (extend-protocol Artist
   duct.database.sql.Boundary
   (find-artist-by-id [db id]
-    (db/select-first db (merge-where sql-artist [:= :a.id id])))
+    (db/select-first db (where sql-artist [:= :a.id id])))
   (find-artists [db {:keys [type name]}]
     (db/select db (cond-> sql-artist
-                    type (merge-where [:= :a.type type])
-                    name (merge-where [:like :a.name (str \% name \%)])
-                    true (merge-order-by [:a.id :asc])))))
+                    type (where [:= :a.type type])
+                    name (where [:like :a.name (str \% name \%)])
+                    true (order-by [:a.id :asc])))))

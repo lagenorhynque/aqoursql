@@ -4,8 +4,7 @@
    [aqoursql.boundary.db.core :as db]
    [clojure.spec.alpha :as s]
    [duct.database.sql]
-   [honeysql.core :as sql]
-   [honeysql.helpers :refer [merge-join merge-order-by merge-select merge-where]]))
+   [honey.sql.helpers :refer [join order-by select where]]))
 
 (s/def ::id nat-int?)
 (s/def ::name string?)
@@ -40,25 +39,24 @@
   (find-songs [db tx-data]))
 
 (def sql-song
-  (sql/build
-   :select :s.*
-   :from [[:song :s]]))
+  {:select :s.*
+   :from [[:song :s]]})
 
 (defn select-artist [sql]
   (-> sql
-      (merge-select [:a.type :artist_type]
-                    [:a.name :artist_name])
-      (merge-join [:artist :a]
-                  [:= :s.artist_id :a.id])))
+      (select [:a.type :artist_type]
+              [:a.name :artist_name])
+      (join [:artist :a]
+            [:= :s.artist_id :a.id])))
 
 (extend-protocol Song
   duct.database.sql.Boundary
   (find-song-by-id [db {:keys [id with-artist?]}]
     (db/select-first db (cond-> sql-song
                           with-artist? select-artist
-                          id (merge-where [:= :s.id id]))))
+                          id (where [:= :s.id id]))))
   (find-songs [db {:keys [name with-artist?]}]
     (db/select db (cond-> sql-song
                     with-artist? select-artist
-                    name (merge-where [:like :s.name (str \% name \%)])
-                    true (merge-order-by [:s.id :asc])))))
+                    name (where [:like :s.name (str \% name \%)])
+                    true (order-by [:s.id :asc])))))
