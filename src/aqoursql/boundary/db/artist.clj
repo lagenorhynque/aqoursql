@@ -41,5 +41,7 @@
   (find-artists [db {:keys [type name]}]
     (db/select db (cond-> sql-artist
                     type (where [:= :a.type type])
-                    name (where [:like :a.name (str \% name \%)])
+                    name (where [:like
+                                 :a.name
+                                 (str \% (db/escape-like-param name) \%)])
                     true (order-by [:a.id :asc])))))

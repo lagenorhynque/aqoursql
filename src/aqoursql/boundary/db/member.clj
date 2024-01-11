@@ -65,10 +65,12 @@
     (db/select-first db (where sql-member-with-organization [:= :m.id id])))
   (find-members [db {:keys [name organization_name artist_id artist_ids]}]
     (db/select db (cond-> sql-member-with-organization
-                    name (where [:like :m.name (str \% name \%)])
+                    name (where [:like
+                                 :m.name
+                                 (str \% (db/escape-like-param name) \%)])
                     organization_name (where [:like
                                               :o.name
-                                              (str \% organization_name \%)])
+                                              (str \% (db/escape-like-param organization_name) \%)])
                     artist_id (where-=-artist-id artist_id)
                     artist_ids (where-in-artist-id artist_ids)
                     true (order-by [:m.id :asc])))))

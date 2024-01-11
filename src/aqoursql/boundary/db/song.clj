@@ -58,5 +58,7 @@
   (find-songs [db {:keys [name with-artist?]}]
     (db/select db (cond-> sql-song
                     with-artist? select-artist
-                    name (where [:like :s.name (str \% name \%)])
+                    name (where [:like
+                                 :s.name
+                                 (str \% (db/escape-like-param name) \%)])
                     true (order-by [:s.id :asc])))))

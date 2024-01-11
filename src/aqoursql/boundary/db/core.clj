@@ -1,6 +1,7 @@
 (ns aqoursql.boundary.db.core
   (:require
    [clojure.spec.alpha :as s]
+   [clojure.string :as str]
    [duct.database.sql]
    [honey.sql :as sql]
    [next.jdbc]
@@ -20,6 +21,13 @@
 
 (def sql-format-opts
   {:dialect :mysql})
+
+(s/fdef escape-like-param
+  :args (s/cat :s string?)
+  :ret string?)
+
+(defn escape-like-param [s]
+  (str/replace s #"[\\_%]" "\\\\$0"))
 
 (s/fdef select
   :args (s/cat :db ::db
