@@ -15,7 +15,7 @@
                  [integrant "0.8.0"]
                  [io.pedestal/pedestal.jetty "0.6.3"]
                  [io.pedestal/pedestal.service "0.6.3"]
-                 [metosin/malli "0.13.0"]
+                 [metosin/malli "0.14.0"]
                  [org.clojure/clojure "1.11.1"]
                  [org.mariadb.jdbc/mariadb-java-client "3.3.2"]
                  [org.slf4j/slf4j-api "2.0.11"]]
