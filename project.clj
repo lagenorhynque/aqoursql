@@ -10,7 +10,7 @@
                  [duct.module.cambium "1.3.1" :exclusions [cheshire
                                                            org.clojure/tools.logging]]
                  [duct.module.pedestal "2.2.0"]
-                 [duct/core "0.8.0" :exclusions [medley]]
+                 [duct/core "0.8.1"]
                  [duct/module.sql "0.6.1"]
                  [integrant "0.8.0"]
                  [io.pedestal/pedestal.jetty "0.6.3"]
